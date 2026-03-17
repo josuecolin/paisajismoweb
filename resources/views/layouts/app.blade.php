@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Paisajismo Inteligente</title>
@@ -61,13 +60,38 @@ box-shadow:0 2px 10px rgba(0,0,0,0.1);
 
 <div class="container">
 
-<a class="navbar-brand fw-bold">Paisajismo IA</a>
+<a class="navbar-brand fw-bold text-success" href="{{ url('/') }}">
+🌿 Paisajismo_valle
+</a>
 
-<div>
+<div class="d-flex align-items-center">
 
-<a href="/login" class="btn btn-outline-dark me-2">Login</a>
+@auth
 
-<a href="/register" class="btn btn-main">Registrarse</a>
+<!-- Usuario logueado -->
+<a href="{{ url('/dashboard') }}" class="btn btn-success me-2">
+👤 {{ Auth::user()->name }}
+</a>
+
+<form method="POST" action="{{ route('logout') }}">
+@csrf
+<button type="submit" class="btn btn-outline-dark">
+Cerrar sesión
+</button>
+</form>
+
+@else
+
+<!-- Usuario no logueado -->
+<a href="{{ route('login') }}" class="btn btn-outline-dark me-2">
+Login
+</a>
+
+<a href="{{ route('register') }}" class="btn btn-main">
+Registrarse
+</a>
+
+@endauth
 
 </div>
 
@@ -75,9 +99,7 @@ box-shadow:0 2px 10px rgba(0,0,0,0.1);
 
 </nav>
 
-
 @yield('content')
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 

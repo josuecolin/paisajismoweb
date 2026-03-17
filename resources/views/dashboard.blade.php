@@ -2,58 +2,154 @@
 
 @section('content')
 
-<div class="container mt-5">
+<!-- HERO DASHBOARD -->
+<section class="hero-dashboard d-flex align-items-center text-center text-white">
+    <div class="container hero-content">
+        <h1 class="fw-bold display-5">🌿 Panel de Paisajismo</h1>
+        <p class="lead">
+            Gestiona tus proyectos de jardines y crea nuevos diseños inteligentes.
+        </p>
+    </div>
+</section>
 
-<h2 class="mb-4">Mi Panel de Usuario</h2>
 
-<div class="row g-4">
+<div class="container py-5">
 
-<div class="col-md-4">
-<div class="card p-4 text-center">
+    <div class="row g-4">
 
-<h5>Crear nuevo proyecto</h5>
+        <!-- CREAR PROYECTO -->
+        <div class="col-md-4">
+            <div class="card dashboard-card text-white">
 
-<p class="text-muted">Diseña un nuevo jardín</p>
+                <div class="card-img-overlay d-flex flex-column justify-content-center text-center card-content">
 
-<a href="/renovar-jardin" class="btn btn-main">
-Crear diseño
-</a>
+                    <h4 class="fw-bold">🌱 Crear nuevo proyecto</h4>
+
+                    <p>
+                        Diseña un nuevo jardín con recomendaciones inteligentes.
+                    </p>
+
+                    <a href="/renovar-jardin" class="btn btn-success mt-2">
+                        Crear diseño
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- MIS PROYECTOS -->
+        <div class="col-md-4">
+            <div class="card dashboard-card projects text-white">
+
+                <div class="card-img-overlay d-flex flex-column justify-content-center text-center card-content">
+
+                    <h4 class="fw-bold">🌳 Mis proyectos</h4>
+
+                    <p>
+                        Consulta todos los jardines que has creado y edítalos cuando quieras.
+                    </p>
+
+                    <a href="/mis-proyectos" class="btn btn-success mt-2">
+                        Ver proyectos
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- PROYECTOS GUARDADOS -->
+        <div class="col-md-4">
+            <div class="card dashboard-card saved text-white">
+
+                <div class="card-img-overlay d-flex flex-column justify-content-center text-center card-content">
+
+                    <h4 class="fw-bold">🌸 Proyectos guardados</h4>
+
+                    <p>
+                        Accede rápidamente a los diseños que guardaste anteriormente.
+                    </p>
+
+                    <a href="/proyectos-guardados" class="btn btn-success mt-2">
+                        Ver guardados
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 </div>
-</div>
 
 
-<div class="col-md-4">
-<div class="card p-4 text-center">
+<style>
 
-<h5>Mis proyectos</h5>
+/* HERO */
+.hero-dashboard{
+    height:320px;
+    background-image:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6');
+    background-size:cover;
+    background-position:center;
+}
 
-<p class="text-muted">Proyectos que has creado</p>
+.hero-content{
+    text-shadow:0 3px 10px rgba(0,0,0,0.6);
+}
 
-<a href="/mis-proyectos" class="btn btn-main">
-Ver proyectos
-</a>
+/* CARDS */
+.dashboard-card{
+    height:260px;
+    border:none;
+    border-radius:15px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
 
-</div>
-</div>
+/* IMAGENES CON OVERLAY MÁS OSCURO */
+.dashboard-card{
+    background-image:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1598908314732-07113901949e');
+}
 
+.projects{
+    background-image:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae');
+}
 
-<div class="col-md-4">
-<div class="card p-4 text-center">
+.saved{
+    background-image:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1598899134739-24c46f58c1a3');
+}
 
-<h5>Proyectos guardados</h5>
+/* CONTENIDO CON FONDO TRANSPARENTE */
+.card-content{
+    background:rgba(0,0,0,0.35);
+    padding:20px;
+    border-radius:10px;
+}
 
-<p class="text-muted">Diseños que guardaste</p>
+/* EFECTO HOVER */
+.dashboard-card{
+    transition:all .3s ease;
+}
 
-<a href="/proyectos-guardados" class="btn btn-main">
-Ver guardados
-</a>
+.dashboard-card:hover{
+    transform:scale(1.03);
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+}
 
-</div>
-</div>
-
-</div>
-
-</div>
+</style>
 
 @endsection

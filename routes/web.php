@@ -6,24 +6,45 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', [HomeController::class,'index']);
+/*
+|--------------------------------------------------------------------------
+| Rutas públicas
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/login',[AuthController::class,'login']);
+Route::get('/', [HomeController::class,'index'])->name('home');
 
-Route::get('/register',[AuthController::class,'register']);
+Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::post('/login',[AuthController::class,'authenticate'])->name('login.authenticate');
 
-Route::get('/dashboard',[DashboardController::class,'index']);
+Route::get('/register',[AuthController::class,'register'])->name('register');
+Route::post('/register',[AuthController::class,'store'])->name('register.store');
 
-Route::get('/projects',[ProjectController::class,'index']);
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
-Route::get('/renovar-jardin', function () {
-    return view('renovar');
-});
 
-Route::get('/mis-proyectos', function () {
-    return view('mis-proyectos');
-});
+/*
+|--------------------------------------------------------------------------
+| Rutas protegidas (requieren sesión)
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/proyectos-guardados', function () {
-    return view('projects');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+    Route::get('/projects',[ProjectController::class,'index'])->name('projects');
+
+    Route::get('/renovar-jardin', function () {
+        return view('renovar');
+    })->name('renovar');
+
+    Route::get('/mis-proyectos', function () {
+        return view('mis-proyectos');
+    })->name('mis-proyectos');
+
+    Route::get('/proyectos-guardados', function () {
+        return view('projects');
+    })->name('proyectos-guardados');
+
 });

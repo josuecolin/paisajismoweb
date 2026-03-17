@@ -2,21 +2,31 @@
 
 @section('content')
 
-<div class="container mt-5">
+<section class="py-5">
 
-<div class="row">
+<div class="container">
 
+<div class="row align-items-center g-5">
+
+<!-- CARD SUBIR FOTO -->
 <div class="col-md-6">
 
-<div class="card p-4">
+<div class="card shadow-lg border-0 p-4 upload-card text-center">
 
-<h3>Comienza tu diseño con una foto</h3>
+<div class="mb-3" style="font-size:50px;">
+📷
+</div>
 
-<p class="text-muted">
-Sube una foto de tu jardín y genera nuevas ideas de paisajismo con inteligencia artificial.
+<h3 class="fw-bold">
+Comienza tu diseño con una foto
+</h3>
+
+<p class="text-muted mt-3">
+Sube una foto de tu jardín y genera nuevas ideas de paisajismo
+utilizando inteligencia artificial.
 </p>
 
-<button class="btn btn-dark">
+<button class="btn btn-success btn-lg mt-3">
 Añadir una foto
 </button>
 
@@ -25,20 +35,31 @@ Añadir una foto
 </div>
 
 
+<!-- TEXTO PROMOCIONAL -->
 <div class="col-md-6">
 
-<h2 class="fw-bold">
-Diseña instantáneamente tu jardín de ensueño
+<h2 class="fw-bold display-6">
+🌿 Diseña instantáneamente tu jardín ideal
 </h2>
 
-<p class="mt-3 text-muted">
+<p class="mt-4 text-muted lead">
 
-Nuestra herramienta analiza tu jardín y propone diseños personalizados según tus preferencias.
+Nuestra herramienta analiza tu jardín y propone diseños
+personalizados según el estilo que prefieras.
+
+Transforma tu espacio exterior en un lugar único con
+recomendaciones inteligentes.
 
 </p>
 
-<button class="btn btn-main mt-3">
+<div class="mt-4">
+
+<button class="btn btn-main btn-lg me-2">
 Generar diseño
+</button>
+
+<button class="btn btn-outline-success btn-lg">
+Explorar estilos
 </button>
 
 </div>
@@ -46,5 +67,40 @@ Generar diseño
 </div>
 
 </div>
+
+</div>
+
+</section>
+
+
+<style>
+
+/* CARD PRINCIPAL */
+.upload-card{
+border-radius:20px;
+transition:all .3s ease;
+background:linear-gradient(135deg,#ffffff,#f8f9fa);
+}
+
+.upload-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* BOTON PRINCIPAL */
+.btn-main{
+background:#ff2e63;
+color:white;
+border:none;
+border-radius:30px;
+padding:12px 25px;
+}
+
+.btn-main:hover{
+background:#e02455;
+color:white;
+}
+
+</style>
 
 @endsection

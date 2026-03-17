@@ -12,22 +12,18 @@
 
 <h3 class="text-center mb-4">Iniciar sesión</h3>
 
-<form action="/dashboard">
+<form method="POST" action="{{ route('login.authenticate') }}">
+
+@csrf
 
 <div class="mb-3">
-
 <label>Email</label>
-
-<input type="email" class="form-control">
-
+<input type="email" name="email" class="form-control" required>
 </div>
 
 <div class="mb-3">
-
 <label>Password</label>
-
-<input type="password" class="form-control">
-
+<input type="password" name="password" class="form-control" required>
 </div>
 
 <button class="btn btn-main w-100">
