@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 | Rutas públicas
 |--------------------------------------------------------------------------
 */
+Route::get('/logs', [App\Http\Controllers\LogController::class, 'index']);
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 
