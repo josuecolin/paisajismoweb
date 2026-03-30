@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+        'stability' => [
+    'key' => env('STABILITY_API_KEY'),
+    'url' => 'https://api.stability.ai/v1/generation',
+    'default_width' => 1152,
+    'default_height' => 896,
+],
+
 ];

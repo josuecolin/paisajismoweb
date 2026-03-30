@@ -51,7 +51,7 @@
                         Consulta todos los jardines que has creado y edítalos cuando quieras.
                     </p>
 
-                    <a href="/mis-proyectos" class="btn btn-success mt-2">
+                    <a href="/posts" class="btn btn-success mt-2">
                         Ver proyectos
                     </a>
 

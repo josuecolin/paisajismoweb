@@ -5,7 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StabilityController;
+use App\Http\Controllers\PostController;
 
+Route::resource('posts', PostController::class);
+
+Route::post('/stability', [StabilityController::class, 'generate'])->name('stability.generate');
 /*
 |--------------------------------------------------------------------------
 | Rutas públicas
@@ -44,8 +49,7 @@ Route::middleware(['auth'])->group(function () {
         return view('mis-proyectos');
     })->name('mis-proyectos');
 
-    Route::get('/proyectos-guardados', function () {
-        return view('projects');
-    })->name('proyectos-guardados');
+
+Route::get('/proyectos-guardados', [PostController::class, 'index']);
 
 });
