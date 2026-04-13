@@ -7,6 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StabilityController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BitacoraController;
 
 Route::resource('posts', PostController::class);
 
@@ -27,6 +28,8 @@ Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::post('/register',[AuthController::class,'store'])->name('register.store');
 
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+
+Route::get('/bitacora', [BitacoraController::class, 'index']) ->name('bitacora.index');
 
 
 /*
