@@ -18,7 +18,7 @@
     body { background-color: var(--crema); font-family: 'Lato', sans-serif; }
 
     .hero-banner {
-        background: linear-gradient(135deg, var(--verde-bosque) 0%, var(--verde-medio) 60%, var(--verde-claro) 100%);
+        background: linear-gradient(135deg, var(--tierra) 0%, #a07820 60%, #c49a35 100%);
         padding: 3rem 0 2.5rem;
         position: relative;
         overflow: hidden;
@@ -55,21 +55,35 @@
 
     .form-card {
         background: var(--blanco-roto);
-        border: 1px solid rgba(74,124,47,0.12);
+        border: 1px solid rgba(139,105,20,0.12);
         border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(45,80,22,0.08);
+        box-shadow: 0 8px 32px rgba(139,105,20,0.08);
         overflow: hidden;
     }
     .form-card-header {
-        background: rgba(74,124,47,0.06);
-        border-bottom: 1px solid rgba(74,124,47,0.1);
+        background: rgba(139,105,20,0.06);
+        border-bottom: 1px solid rgba(139,105,20,0.1);
         padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .form-card-header-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.25rem;
-        color: var(--verde-bosque);
+        color: var(--tierra);
         margin: 0;
+    }
+    .badge-editando {
+        background: rgba(139,105,20,0.1);
+        color: var(--tierra);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.8rem;
+        border-radius: 50px;
+        border: 1px solid rgba(139,105,20,0.2);
     }
     .form-card-body { padding: 2rem; }
 
@@ -79,19 +93,15 @@
         font-size: 0.82rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--verde-medio);
+        color: var(--tierra);
         margin-bottom: 0.5rem;
         display: block;
     }
-    .field-hint {
-        font-size: 0.8rem;
-        color: #8a9e8a;
-        margin-top: 0.3rem;
-    }
+    .field-hint { font-size: 0.8rem; color: #8a9e8a; margin-top: 0.3rem; }
 
     .input-custom {
         width: 100%;
-        border: 1.5px solid rgba(74,124,47,0.2);
+        border: 1.5px solid rgba(139,105,20,0.2);
         border-radius: 10px;
         padding: 0.75rem 1rem;
         font-family: 'Lato', sans-serif;
@@ -103,38 +113,64 @@
     }
     .input-custom::placeholder { color: #b5c5b5; }
     .input-custom:focus {
-        border-color: var(--verde-medio);
-        box-shadow: 0 0 0 3px rgba(74,124,47,0.12);
+        border-color: var(--tierra);
+        box-shadow: 0 0 0 3px rgba(139,105,20,0.1);
     }
     .input-custom.is-invalid { border-color: #dc3545; }
 
     textarea.input-custom { resize: vertical; min-height: 130px; }
 
-    .file-upload-wrapper {
-        border: 2px dashed rgba(74,124,47,0.25);
+    .imagen-actual {
         border-radius: 12px;
-        padding: 2rem;
+        overflow: hidden;
+        border: 1.5px solid rgba(139,105,20,0.15);
+        margin-bottom: 1rem;
+        position: relative;
+    }
+    .imagen-actual img {
+        width: 100%; 
+        max-height: 220px; 
+        object-fit: cover; 
+        display: block;
+    }
+    .imagen-actual-badge {
+        position: absolute;
+        top: 10px; left: 10px;
+        background: rgba(0,0,0,0.55);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.7rem;
+        border-radius: 50px;
+    }
+
+    .file-upload-wrapper {
+        border: 2px dashed rgba(139,105,20,0.25);
+        border-radius: 12px;
+        padding: 1.5rem;
         text-align: center;
-        background: rgba(74,124,47,0.03);
+        background: rgba(139,105,20,0.03);
         transition: all 0.2s;
         cursor: pointer;
         position: relative;
     }
     .file-upload-wrapper:hover {
-        border-color: var(--verde-medio);
-        background: rgba(74,124,47,0.06);
+        border-color: var(--tierra);
+        background: rgba(139,105,20,0.06);
     }
     .file-upload-wrapper input[type="file"] {
         position: absolute; inset: 0;
         opacity: 0; cursor: pointer; width: 100%; height: 100%;
     }
-    .file-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
-    .file-text { color: var(--verde-medio); font-weight: 700; font-size: 0.9rem; }
-    .file-sub { color: #8a9e8a; font-size: 0.8rem; margin-top: 0.2rem; }
+    .file-icon { font-size: 1.5rem; margin-bottom: 0.3rem; display: block; }
+    .file-text { color: var(--tierra); font-weight: 700; font-size: 0.88rem; }
+    .file-sub { color: #8a9e8a; font-size: 0.78rem; margin-top: 0.2rem; }
     .preview-img {
-        max-height: 200px;
+        max-height: 180px;
         border-radius: 10px;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
         display: none;
         object-fit: cover;
         width: 100%;
@@ -142,12 +178,12 @@
 
     .field-separator {
         height: 1px;
-        background: rgba(74,124,47,0.1);
+        background: rgba(139,105,20,0.1);
         margin: 1.8rem 0;
     }
 
-    .btn-publicar {
-        background: var(--verde-bosque);
+    .btn-guardar {
+        background: var(--tierra);
         color: #fff;
         border: none;
         border-radius: 50px;
@@ -159,15 +195,15 @@
         transition: all 0.25s;
         cursor: pointer;
     }
-    .btn-publicar:hover {
-        background: var(--verde-medio);
+    .btn-guardar:hover {
+        background: #6b4f0e;
         transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(45,80,22,0.25);
+        box-shadow: 0 6px 18px rgba(139,105,20,0.3);
     }
     .btn-volver {
         background: transparent;
         color: #8a9e8a;
-        border: 1.5px solid rgba(74,124,47,0.2);
+        border: 1.5px solid rgba(139,105,20,0.2);
         border-radius: 50px;
         padding: 0.75rem 1.8rem;
         font-family: 'Lato', sans-serif;
@@ -178,23 +214,35 @@
         transition: all 0.2s;
     }
     .btn-volver:hover {
+        border-color: var(--tierra);
+        color: var(--tierra);
+    }
+    .btn-ver-pub {
+        background: transparent;
+        color: var(--verde-medio);
+        border: 1.5px solid rgba(74,124,47,0.25);
+        border-radius: 50px;
+        padding: 0.6rem 1.4rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+    .btn-ver-pub:hover {
+        background: var(--verde-medio);
+        color: #fff;
         border-color: var(--verde-medio);
-        color: var(--verde-bosque);
     }
-    .error-msg {
-        color: #b91c1c;
+    .error-msg { color: #b91c1c; font-size: 0.82rem; margin-top: 0.35rem; font-weight: 600; }
+    .meta-info {
+        background: rgba(139,105,20,0.05);
+        border-radius: 10px;
+        padding: 0.8rem 1rem;
         font-size: 0.82rem;
-        margin-top: 0.35rem;
-        font-weight: 600;
+        color: #8a7060;
     }
-    .tip-card {
-        background: rgba(74,124,47,0.06);
-        border-left: 3px solid var(--verde-claro);
-        border-radius: 0 10px 10px 0;
-        padding: 1rem 1.2rem;
-    }
-    .tip-card p { margin: 0; font-size: 0.85rem; color: #4a6040; line-height: 1.6; }
-    .tip-card strong { color: var(--verde-bosque); }
+    .meta-info span { font-weight: 700; color: var(--tierra); }
 </style>
 
 <!-- HERO -->
@@ -203,10 +251,12 @@
         <nav style="margin-bottom:1rem;">
             <a href="{{ route('posts.index') }}" class="breadcrumb-link">← Publicaciones</a>
             <span style="color:rgba(255,255,255,0.4);margin:0 0.5rem;">/</span>
-            <span style="color:rgba(255,255,255,0.85);font-size:0.85rem;">Nueva publicación</span>
+            <a href="{{ route('posts.show', $post) }}" class="breadcrumb-link">{{ Str::limit($post->titulo, 30) }}</a>
+            <span style="color:rgba(255,255,255,0.4);margin:0 0.5rem;">/</span>
+            <span style="color:rgba(255,255,255,0.85);font-size:0.85rem;">Editar</span>
         </nav>
-        <h1 class="hero-title">🌱 Crear publicación</h1>
-        <p class="hero-sub">Comparte tu proyecto y transforma espacios</p>
+        <h1 class="hero-title">✏️ Editar publicación</h1>
+        <p class="hero-sub">Actualiza los detalles de tu proyecto</p>
     </div>
 </div>
 
@@ -226,13 +276,22 @@
             </div>
             @endif
 
+            <!-- META INFO -->
+            <div class="meta-info mb-4">
+                📅 Publicado el <span>{{ $post->created_at->format('d \d\e F \d\e Y') }}</span>
+                &nbsp;·&nbsp;
+                🔄 Última edición: <span>{{ $post->updated_at->diffForHumans() }}</span>
+            </div>
+
             <div class="form-card">
                 <div class="form-card-header">
-                    <h2 class="form-card-header-title">📋 Datos de la publicación</h2>
+                    <h2 class="form-card-header-title">📋 Editar datos</h2>
+                    <span class="badge-editando">Modo edición</span>
                 </div>
                 <div class="form-card-body">
-                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
                         <!-- TÍTULO -->
                         <div class="mb-4">
@@ -242,12 +301,11 @@
                                 id="titulo"
                                 name="titulo" 
                                 class="input-custom {{ $errors->has('titulo') ? 'is-invalid' : '' }}"
-                                value="{{ old('titulo') }}"
-                                placeholder="Ej. Jardín zen con bambú y piedra volcánica">
+                                value="{{ old('titulo', $post->titulo) }}"
+                                placeholder="Título del proyecto">
                             @error('titulo')
                                 <p class="error-msg">{{ $message }}</p>
                             @enderror
-                            <p class="field-hint">Un título descriptivo ayuda a que más personas descubran tu proyecto.</p>
                         </div>
 
                         <div class="field-separator"></div>
@@ -258,8 +316,7 @@
                             <textarea 
                                 id="contenido"
                                 name="contenido" 
-                                class="input-custom {{ $errors->has('contenido') ? 'is-invalid' : '' }}"
-                                placeholder="Describe el estilo del diseño, las plantas utilizadas, los materiales, el ambiente que crea...">{{ old('contenido') }}</textarea>
+                                class="input-custom {{ $errors->has('contenido') ? 'is-invalid' : '' }}">{{ old('contenido', $post->contenido) }}</textarea>
                             @error('contenido')
                                 <p class="error-msg">{{ $message }}</p>
                             @enderror
@@ -270,11 +327,20 @@
                         <!-- IMAGEN -->
                         <div class="mb-4">
                             <label class="field-label">📸 Imagen del diseño</label>
-                            <div class="file-upload-wrapper" id="dropZone">
+
+                            @if($post->imagen)
+                            <div class="imagen-actual">
+                                <img src="{{ asset('storage/' . $post->imagen) }}" alt="{{ $post->titulo }}">
+                                <span class="imagen-actual-badge">Imagen actual</span>
+                            </div>
+                            <p class="field-hint mb-2">Sube una nueva imagen para reemplazarla, o déjala vacía para conservar la actual.</p>
+                            @endif
+
+                            <div class="file-upload-wrapper">
                                 <input type="file" name="imagen" id="imagenInput" accept="image/*"
                                        onchange="previewImagen(event)">
-                                <span class="file-icon">🖼️</span>
-                                <p class="file-text">Haz clic o arrastra una imagen aquí</p>
+                                <span class="file-icon">🔄</span>
+                                <p class="file-text">{{ $post->imagen ? 'Cambiar imagen' : 'Subir imagen' }}</p>
                                 <p class="file-sub">PNG, JPG, WEBP — máximo 2MB</p>
                             </div>
                             <img id="previewImg" class="preview-img" src="#" alt="Vista previa">
@@ -285,15 +351,13 @@
 
                         <div class="field-separator"></div>
 
-                        <!-- TIP -->
-                        <div class="tip-card mb-4">
-                            <p>💡 <strong>Consejo:</strong> Las publicaciones con imágenes y descripciones detalladas reciben mucho más interés. ¡Incluye las plantas que usaste y el estilo que seguiste!</p>
-                        </div>
-
                         <!-- BOTONES -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ route('posts.index') }}" class="btn-volver">← Volver</a>
-                            <button type="submit" class="btn-publicar">🌱 Publicar proyecto</button>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('posts.index') }}" class="btn-volver">← Volver</a>
+                                <a href="{{ route('posts.show', $post) }}" class="btn-ver-pub">Ver publicación</a>
+                            </div>
+                            <button type="submit" class="btn-guardar">💾 Guardar cambios</button>
                         </div>
 
                     </form>
