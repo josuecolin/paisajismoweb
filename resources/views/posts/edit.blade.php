@@ -348,6 +348,14 @@
                                 <p class="error-msg">{{ $message }}</p>
                             @enderror
                         </div>
+                        
+                         <div class="mb-4">
+                            <label class="field-label">🏷️ Categorías de la publicación</label>
+                            @include('partials.categoria-selector', [
+                                'categorias'    => $categorias,
+                                'seleccionadas' => old('categorias', $seleccionadas),
+                            ])
+                        </div>
 
                         <div class="field-separator"></div>
 

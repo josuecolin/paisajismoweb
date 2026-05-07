@@ -23,10 +23,18 @@ class Post extends Model
     ];
  
     /**
-     * Relación: un post pertenece a un usuario
+     * Usuario autor del post
      */
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+ 
+    /**
+     * Categorías del post (many-to-many)
+     */
+    public function categorias()
+    {
+        return $this->belongsToMany(Categoria::class, 'categoria_post');
     }
 }

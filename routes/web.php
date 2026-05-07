@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StabilityController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\CategoriaController;
 
 Route::resource('posts', PostController::class);
 
@@ -30,6 +31,15 @@ Route::post('/register',[AuthController::class,'store'])->name('register.store')
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/bitacora', [BitacoraController::class, 'index']) ->name('bitacora.index');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/mis-preferencias',      [CategoriaController::class, 'preferencias'])
+         ->name('categorias.preferencias');
+    Route::post('/mis-preferencias',     [CategoriaController::class, 'guardarPreferencias'])
+         ->name('categorias.guardarPreferencias');
+});
+
+Route::get('/explorar', [PostController::class, 'explorar'])->name('posts.explorar');
 
 
 /*
@@ -55,4 +65,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/proyectos-guardados', [PostController::class, 'index']);
 
+Route::middleware('auth')->group(function () {
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+    Route::resource('posts', PostController::class)->except(['index']);
+});
 });

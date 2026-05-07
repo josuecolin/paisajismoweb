@@ -64,6 +64,12 @@ box-shadow:0 2px 10px rgba(0,0,0,0.1);
 🌿 Paisajismo_valle
 </a>
 
+<a class="navbar-brand fw-bold text-success" href="{{ route('posts.explorar') }}">Explorar</a>
+
+@auth
+    <a class="navbar-brand fw-bold text-success" href="{{ route('posts.index') }}">Mis publicaciones</a>
+@endauth
+
 <div class="d-flex align-items-center">
 
 @auth

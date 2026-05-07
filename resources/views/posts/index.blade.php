@@ -240,6 +240,28 @@
                         <h3 class="post-titulo">{{ $post->titulo }}</h3>
                         <p class="post-contenido">{{ $post->contenido }}</p>
 
+                        {{-- CATEGORÍAS --}}
+                        @if($post->categorias->count())
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            @foreach($post->categorias as $cat)
+                            <span style="
+                                display:inline-flex;
+                                align-items:center;
+                                gap:4px;
+                                background:{{ $cat->color }}18;
+                                color:{{ $cat->color }};
+                                border:1px solid {{ $cat->color }}40;
+                                border-radius:50px;
+                                padding:3px 10px;
+                                font-size:0.72rem;
+                                font-weight:700;
+                            ">
+                                {{ $cat->icono }} {{ $cat->nombre }}
+                            </span>
+                            @endforeach
+                        </div>
+                        @endif
+
                         <div class="divider-leaf"><span>❧</span></div>
 
                         <div class="d-flex gap-2 flex-wrap">
