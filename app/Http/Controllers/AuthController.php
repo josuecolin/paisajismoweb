@@ -49,7 +49,6 @@ class AuthController extends Controller
     // Guardar usuario
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
@@ -64,8 +63,8 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard');
-
+        // ✅ Esta es la única línea que cambia
+        return redirect()->route('categorias.preferencias');
     }
 
 

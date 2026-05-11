@@ -37,4 +37,10 @@ class Post extends Model
     {
         return $this->belongsToMany(Categoria::class, 'categoria_post');
     }
+
+        public function guardadoPor()
+    {
+        return $this->belongsToMany(User::class, 'post_guardados')
+                    ->withTimestamps();
+    }
 }

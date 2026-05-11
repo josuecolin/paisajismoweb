@@ -27,19 +27,20 @@ class CategoriaController extends Controller
     /**
      * Guardar preferencias del usuario (sync many-to-many)
      */
-    public function guardarPreferencias(Request $request)
+        public function guardarPreferencias(Request $request)
     {
         $request->validate([
             'categorias'   => 'nullable|array',
             'categorias.*' => 'exists:categorias,id',
         ]);
- 
+
         Auth::user()->categoriasPreferidas()->sync(
             $request->input('categorias', [])
         );
- 
-        return redirect()->back()
-                         ->with('success', '¡Tus preferencias han sido guardadas! 🌿');
+
+        // ✅ Solo esta línea cambia
+        return redirect()->route('home')
+                        ->with('success', '¡Tus preferencias han sido guardadas! 🌿');
     }
 }
  

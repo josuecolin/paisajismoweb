@@ -9,6 +9,7 @@ use App\Http\Controllers\StabilityController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\TiendaRecomendacionController;
 
 Route::resource('posts', PostController::class);
 
@@ -31,6 +32,8 @@ Route::post('/register',[AuthController::class,'store'])->name('register.store')
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/bitacora', [BitacoraController::class, 'index']) ->name('bitacora.index');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/mis-preferencias',      [CategoriaController::class, 'preferencias'])
@@ -69,4 +72,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::resource('posts', PostController::class)->except(['index']);
 });
+
+Route::middleware('auth')->group(function () {
+    Route::post('/posts/{post}/guardar', [PostController::class, 'toggleGuardar'])
+         ->name('posts.guardar');
+    Route::get('/proyectos-guardados', [PostController::class, 'guardados'])
+         ->name('proyectos-guardados');
+});
+
+Route::get('/tiendas-recomendadas', [TiendaRecomendacionController::class, 'index'])
+     ->name('tiendas.index');
+
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+ 
+    Route::get   ('/tiendas',            [TiendaRecomendacionController::class, 'adminIndex'])->name('tiendas.index');
+    Route::get   ('/tiendas/crear',      [TiendaRecomendacionController::class, 'create'])    ->name('tiendas.create');
+    Route::post  ('/tiendas',            [TiendaRecomendacionController::class, 'store'])     ->name('tiendas.store');
+    Route::get   ('/tiendas/{tienda}',   [TiendaRecomendacionController::class, 'edit'])      ->name('tiendas.edit');
+    Route::put   ('/tiendas/{tienda}',   [TiendaRecomendacionController::class, 'update'])    ->name('tiendas.update');
+    Route::delete('/tiendas/{tienda}',   [TiendaRecomendacionController::class, 'destroy'])   ->name('tiendas.destroy');
+ 
+});
+
 });

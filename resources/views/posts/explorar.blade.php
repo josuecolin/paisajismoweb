@@ -239,6 +239,23 @@
         background: rgba(255,255,255,0.22);
         color: #fff;
     }
+    .btn-guardar {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: 1.5px solid rgba(74,124,47,0.2);
+    border-radius: 8px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #6b7a6b;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    }
+    .btn-guardar:hover { background: #fff3e0; border-color: #e67e22; color: #e67e22; }
+    .btn-guardar.guardado { background: #fff8e1; border-color: #f0b429; color: #c17f00; }
 </style>
 
 <!-- HERO -->
@@ -326,8 +343,22 @@
                         </div>
                         @endif
 
-                        <a href="{{ route('posts.show', $post) }}" class="btn-ver">Ver proyecto →</a>
+                                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                            <a href="{{ route('posts.show', $post) }}" class="btn-ver">Ver proyecto →</a>
 
+                            @auth
+                            <form method="POST" action="{{ route('posts.guardar', $post) }}">
+                                @csrf
+                                @php
+                                    $yaGuardado = Auth::user()->postsGuardados
+                                        ->contains($post->id);
+                                @endphp
+                                <button type="submit" class="btn-guardar {{ $yaGuardado ? 'guardado' : '' }}">
+                                    {{ $yaGuardado ? '🔖 Guardado' : '🔖 Guardar' }}
+                                </button>
+                            </form>
+                            @endauth
+                        </div>
                     </div>
                 </div>
             </div>

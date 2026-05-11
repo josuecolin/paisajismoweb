@@ -134,12 +134,40 @@ class PostController extends Controller
                          ->with('success', 'Publicación eliminada correctamente.');
     }
 
-    public function explorar()
+        public function explorar()
 {
-    $posts = Post::with(['user', 'categorias'])
-                 ->latest()
-                 ->paginate(12);
+    $posts = Post::with(['user', 'categorias'])->latest()->paginate(12);
+
+    // Pre-carga los guardados del usuario actual para evitar N+1
+    if (Auth::check()) {
+        Auth::user()->load('postsGuardados');
+    }
 
     return view('posts.explorar', compact('posts'));
 }
+
+    public function toggleGuardar(Post $post)
+    {
+        $user = Auth::user();
+
+        if ($user->postsGuardados()->where('post_id', $post->id)->exists()) {
+            $user->postsGuardados()->detach($post->id);
+            $guardado = false;
+        } else {
+            $user->postsGuardados()->attach($post->id);
+            $guardado = true;
+        }
+
+        return back()->with('guardado_status', $guardado ? 'guardado' : 'removido');
+    }
+
+    public function guardados()
+    {
+        $posts = Auth::user()->postsGuardados()
+                    ->with(['user', 'categorias'])
+                    ->latest('post_guardados.created_at')
+                    ->paginate(12);
+
+        return view('posts.guardados', compact('posts'));
+    }
 }

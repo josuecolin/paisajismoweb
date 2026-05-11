@@ -55,4 +55,10 @@ class User extends Authenticatable
    {
        return $this->belongsToMany(\App\Models\Categoria::class, 'categoria_user');
    }
+
+    public function postsGuardados()
+    {
+        return $this->belongsToMany(Post::class, 'post_guardados')
+                    ->withTimestamps();
+    }
 }

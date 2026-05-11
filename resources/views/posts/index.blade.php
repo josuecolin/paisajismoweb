@@ -184,6 +184,22 @@
         background: rgba(74,124,47,0.2);
     }
     .divider-leaf span { color: var(--verde-claro); font-size: 1.1rem; }
+
+    .hero-banner::before,
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    /* ✅ Agrega esto */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Y asegura que el contenido esté por encima */
+.hero-banner .container {
+    position: relative;
+    z-index: 2;
+}
 </style>
 
 <!-- HERO -->
@@ -196,9 +212,10 @@
                 <p class="hero-sub">Inspírate con proyectos de jardines, terrazas y espacios verdes</p>
             </div>
             <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                <a href="{{ route('posts.create') }}" class="btn-nueva-pub">
-                    ✦ Nueva publicación
-                </a>
+            <a href="{{ route('posts.create') }}" 
+                   style="display:inline-block;background:#fff;color:#2D5016;font-weight:700;padding:0.65rem 1.8rem;border-radius:50px;text-decoration:none;">
+                ✦ Nueva publicación
+             </a>
             </div>
         </div>
     </div>
