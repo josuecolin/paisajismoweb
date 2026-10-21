@@ -19,10 +19,13 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    'name',
+    'email',
+    'password',
+    'questionnaire_completed_at',
+    'cluster_ml',
+    'perfil_ml',
+];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -34,18 +37,23 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
      */
     protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+{
+    return [
+        'email_verified_at' => 'datetime',
+        'questionnaire_completed_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+}
 
         public function posts()
     {
@@ -61,4 +69,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, 'post_guardados')
                     ->withTimestamps();
     }
+
+    public function preferences()
+{
+    return $this->hasOne(UserPreference::class);
+}
+
+public function projects()
+{
+    return $this->hasMany(\App\Models\Project::class);
+}
+
+    
 }

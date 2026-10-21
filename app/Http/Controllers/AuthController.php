@@ -63,8 +63,8 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        // ✅ Esta es la única línea que cambia
-        return redirect()->route('categorias.preferencias');
+        return redirect()
+    ->route('questionnaire.create');
     }
 
 

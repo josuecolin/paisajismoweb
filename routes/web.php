@@ -10,6 +10,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\TiendaRecomendacionController;
+use App\Http\Controllers\QuestionnaireController;
+use App\Http\Controllers\ProjectItemController;
+
 
 Route::resource('posts', PostController::class);
 
@@ -83,7 +86,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/tiendas-recomendadas', [TiendaRecomendacionController::class, 'index'])
      ->name('tiendas.index');
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
  
     Route::get   ('/tiendas',            [TiendaRecomendacionController::class, 'adminIndex'])->name('tiendas.index');
     Route::get   ('/tiendas/crear',      [TiendaRecomendacionController::class, 'create'])    ->name('tiendas.create');
@@ -93,5 +96,29 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::delete('/tiendas/{tienda}',   [TiendaRecomendacionController::class, 'destroy'])   ->name('tiendas.destroy');
  
 });
+
+Route::middleware('auth')->group(function () {
+
+    Route::get(
+        '/cuestionario',
+        [QuestionnaireController::class, 'create']
+    )->name('questionnaire.create');
+
+    Route::post(
+        '/cuestionario',
+        [QuestionnaireController::class, 'store']
+    )->name('questionnaire.store');
+
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('projects', ProjectController::class)
+        ->only(['index', 'create', 'store', 'show', 'update', 'destroy']);
+
+    Route::post('projects/{project}/items', [ProjectItemController::class, 'store'])->name('projects.items.store');
+    Route::patch('projects/{project}/items/{item}', [ProjectItemController::class, 'update'])->name('projects.items.update');
+    Route::delete('projects/{project}/items/{item}', [ProjectItemController::class, 'destroy'])->name('projects.items.destroy');
+});
+
 
 });

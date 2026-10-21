@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paisajismo Inteligente</title>
+    <title>Garden_valle</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -241,8 +241,8 @@
         <a class="sidebar-brand" href="{{ route('home') }}">
             <div class="sidebar-brand-icon">🌿</div>
             <div>
-                <div class="sidebar-brand-name">Paisajismo</div>
-                <div class="sidebar-brand-sub">Valle</div>
+                <div class="sidebar-brand-name">Garden_valle</div>
+                <div class="sidebar-brand-sub">paisajismo</div>
             </div>
         </a>
     </div>
@@ -282,7 +282,13 @@
         <a href="{{ route('proyectos-guardados') }}"
         class="nav-item {{ request()->routeIs('proyectos-guardados') ? 'active' : '' }}">
             <i class="ti ti-bookmark" aria-hidden="true"></i>
-            Proyectos guardados
+            Publicaciones guardadas
+        </a>
+
+        <a href="{{ route('projects.index') }}"
+        class="nav-item {{ request()->routeIs('projects.*') ? 'active' : '' }}">
+            <i class="ti ti-plant-2" aria-hidden="true"></i>
+            Mis proyectos
         </a>
 
         <a href="{{ route('tiendas.index') }}"
@@ -299,11 +305,11 @@
             mi perfil
         </a>
 
-        <a href="{{ route('categorias.preferencias') }}"
-           class="nav-item {{ request()->routeIs('categorias.preferencias') ? 'active' : '' }}">
-            <i class="ti ti-adjustments-horizontal" aria-hidden="true"></i>
-            Preferencias
-        </a>
+        <a href="{{ route('questionnaire.create') }}"
+   class="nav-item {{ request()->routeIs('questionnaire.*') ? 'active' : '' }}">
+    <i class="ti ti-adjustments-horizontal" aria-hidden="true"></i>
+    Cuestionario de preferencias
+</a>
 
         <a href="{{ route('renovar') }}"
            class="nav-item {{ request()->routeIs('renovar') ? 'active' : '' }}">

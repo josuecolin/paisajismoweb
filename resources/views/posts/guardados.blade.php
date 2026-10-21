@@ -134,7 +134,7 @@
         <p style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;">
             Mi colección
         </p>
-        <h1 class="hero-title">Proyectos <em>guardados</em></h1>
+        <h1 class="hero-title">Publicaciones <em>guardadas</em></h1>
         <p class="hero-sub">Todo lo que has marcado para inspirarte</p>
         <div class="mt-3">
             <span class="stat-pill">🔖 {{ $posts->total() }} guardados</span>

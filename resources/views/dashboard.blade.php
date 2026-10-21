@@ -85,6 +85,113 @@
     </div>
 </section>
 
+<!-- ESTADO DEL CUESTIONARIO -->
+<section class="questionnaire-status-section">
+    <div class="container py-4">
+
+        @if(Auth::user()->questionnaire_completed_at)
+
+            <!-- CUESTIONARIO COMPLETADO -->
+            <div class="questionnaire-status-card questionnaire-completed">
+
+                <div class="questionnaire-status-icon">
+                    <i class="ti ti-circle-check"></i>
+                </div>
+
+                <div class="questionnaire-status-content">
+
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="status-badge completed-badge">
+                            Completado
+                        </span>
+
+                        <small class="text-muted">
+                            Perfil personalizado
+                        </small>
+                    </div>
+
+                    <h4 class="fw-bold mb-2">
+                        ¡Tu cuestionario de preferencias está completo!
+                    </h4>
+
+                    <p class="mb-0 text-muted">
+                        Tus respuestas están guardadas y nos ayudan a
+                        personalizar los proyectos y recomendaciones de
+                        paisajismo que aparecen en tu cuenta.
+                    </p>
+
+                </div>
+
+
+                <div class="questionnaire-status-action">
+
+                    <a
+                        href="{{ route('questionnaire.create') }}"
+                        class="btn btn-outline-success"
+                    >
+                        <i class="ti ti-edit me-1"></i>
+                        Modificar respuestas
+                    </a>
+
+                </div>
+
+            </div>
+
+        @else
+
+            <!-- CUESTIONARIO PENDIENTE -->
+            <div class="questionnaire-status-card questionnaire-pending">
+
+                <div class="questionnaire-status-icon pending-icon">
+                    <i class="ti ti-clipboard-text"></i>
+                </div>
+
+                <div class="questionnaire-status-content">
+
+                    <div class="d-flex align-items-center gap-2 mb-1">
+
+                        <span class="status-badge pending-badge">
+                            Pendiente
+                        </span>
+
+                        <small class="text-muted">
+                            Recomendado
+                        </small>
+
+                    </div>
+
+                    <h4 class="fw-bold mb-2">
+                        Completa tu cuestionario de preferencias
+                    </h4>
+
+                    <p class="mb-0 text-muted">
+                        Aún no conocemos tus gustos de paisajismo.
+                        Responde el cuestionario para recibir proyectos,
+                        estilos y recomendaciones adaptadas a tus
+                        preferencias.
+                    </p>
+
+                </div>
+
+
+                <div class="questionnaire-status-action">
+
+                    <a
+                        href="{{ route('questionnaire.create') }}"
+                        class="btn btn-success"
+                    >
+                        <i class="ti ti-leaf me-1"></i>
+                        Responder cuestionario
+                    </a>
+
+                </div>
+
+            </div>
+
+        @endif
+
+    </div>
+</section>
 
 <!-- OPCIONES -->
 <div class="container py-5">
@@ -307,6 +414,145 @@ body{
 .btn-outline-light{
     border-radius:12px;
     padding:10px 20px;
+}
+
+/* =====================================================
+   ESTADO DEL CUESTIONARIO
+===================================================== */
+
+.questionnaire-status-section{
+    background:#f5f7f2;
+}
+
+.questionnaire-status-card{
+    background:#fff;
+    border-radius:22px;
+    padding:25px 30px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    box-shadow:0 8px 30px rgba(47, 90, 56, 0.08);
+    transition:all .3s ease;
+    border:1px solid #e5eee5;
+}
+
+.questionnaire-status-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 35px rgba(47, 90, 56, 0.12);
+}
+
+
+/* COMPLETADO */
+.questionnaire-completed{
+    border-left:6px solid #66bb6a;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f1faf2 100%
+        );
+}
+
+
+/* PENDIENTE */
+.questionnaire-pending{
+    border-left:6px solid #a5d6a7;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f7fbf5 100%
+        );
+}
+
+
+/* ICONO */
+.questionnaire-status-icon{
+    width:70px;
+    height:70px;
+    min-width:70px;
+
+    border-radius:20px;
+
+    background:#e6f4e8;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+
+    color:#388e3c;
+}
+
+
+.pending-icon{
+    background:#eef7e8;
+    color:#689f38;
+}
+
+
+/* CONTENIDO */
+.questionnaire-status-content{
+    flex:1;
+}
+
+.questionnaire-status-content h4{
+    color:#2f5135;
+}
+
+
+/* ESTADO */
+.status-badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.completed-badge{
+    background:#dff3e2;
+    color:#2e7d32;
+}
+
+.pending-badge{
+    background:#eef5df;
+    color:#558b2f;
+}
+
+
+/* BOTÓN */
+.questionnaire-status-action{
+    min-width:190px;
+    text-align:right;
+}
+
+.questionnaire-status-action .btn{
+    border-radius:12px;
+    padding:10px 18px;
+    font-weight:600;
+}
+
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .questionnaire-status-card{
+        flex-direction:column;
+        text-align:center;
+        padding:25px 20px;
+    }
+
+    .questionnaire-status-action{
+        width:100%;
+        min-width:auto;
+        text-align:center;
+    }
+
+    .questionnaire-status-action .btn{
+        width:100%;
+    }
+
 }
 
 </style>
